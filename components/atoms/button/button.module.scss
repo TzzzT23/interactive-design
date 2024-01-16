@@ -1,0 +1,37 @@
+.button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  min-width: 17rem;
+  border: 2px solid transparent;
+  border-radius: 312rem;
+  padding: 1.075rem 2rem;
+  font-size: map-get($font-sizes, 5);
+  font-weight: map-get($font-weights, 700);
+  color: map-get($colors, dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all ease-in-out 200ms;
+
+  [data-selector='icon'] {
+    transition: all ease-in-out 200ms;
+  }
+
+  &:hover {
+    box-shadow: 9px 9px 0px 0px #262626;
+    border: 2px solid map-get($colors, dark);
+    transition: all ease-in-out 200ms;
+
+    [data-selector='icon'] {
+      rotate: 90deg;
+      transition: all ease-in-out 200ms;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .button {
+    padding: 0.85rem 1.5rem;
+  }
+}

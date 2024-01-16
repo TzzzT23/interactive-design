@@ -1,0 +1,142 @@
+@mixin common-text-styles($color: dark, $font-size: 4, $font-weight: 700) {
+  color: map-get($colors, $color);
+  font-size: map-get($font-sizes, $font-size);
+  font-weight: map-get($font-weights, $font-weight);
+}
+
+.home {
+  margin-block: 3.75rem;
+
+  &__content {
+    margin-block-start: 4.5rem;
+
+    &--important-text {
+      text-transform: uppercase;
+      @include common-text-styles(yellow);
+    }
+
+    &--title {
+      @include common-text-styles(dark, 9);
+      line-height: normal;
+    }
+
+    &--cursor {
+      display: inline-block;
+      background-color: #ccc;
+      margin-left: 0.1rem;
+      width: 3px;
+      animation: blink 1s infinite;
+    }
+
+    &--typed-text {
+      @include common-text-styles(dark, 9);
+      line-height: normal;
+    }
+
+    &--chips {
+      padding-block: 3rem;
+    }
+
+    &--side {
+      position: relative;
+
+      img {
+        object-fit: contain;
+      }
+    }
+
+    [data-selector='typewriter'] {
+      column-gap: 0.35rem;
+
+      & + --typed-text {
+        margin-block: auto;
+      }
+    }
+  }
+
+  &--header {
+    height: 3.5rem;
+    border-radius: 312rem;
+    padding-inline: 1rem;
+    background-color: map-get($colors, white);
+    display: flex;
+    position: relative;
+
+    > img {
+      position: absolute;
+      inset-inline-end: 50%;
+      inset-block-start: 50%;
+      transform: translate(50%, -50%);
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .home {
+    &__content {
+      margin-block-start: 0;
+
+      &--side {
+        min-height: 21.875rem;
+      }
+
+      [data-selector='primary-content'] {
+        order: 2;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .home {
+    margin-block: 3rem;
+
+    &__content {
+      &--important-text {
+        @include common-text-styles(yellow, 3);
+      }
+
+      &--title,
+      &--typed-text {
+        @include common-text-styles(dark, 6);
+      }
+
+      &--chips {
+        padding-block: 2rem;
+      }
+
+      &--action {
+        width: 100%;
+      }
+    }
+
+    &--header {
+      height: 3rem;
+
+      > img {
+        position: absolute;
+        inset-inline-end: unset;
+        inset-inline-start: 5%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    background-color: #ccc;
+  }
+  49% {
+    background-color: map-get($colors, dark);
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: map-get($colors, dark);
+  }
+}
