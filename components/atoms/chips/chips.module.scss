@@ -1,0 +1,12 @@
+.chip {
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border-radius: 312rem;
+  display: inline-flex;
+  background-color: map-get($colors, white);
+}
+
+@include media-breakpoint-down(sm) {
+  .chip {
+    padding: 0.35rem 1.5rem 0.35rem 0.75rem;
+  }
+}
