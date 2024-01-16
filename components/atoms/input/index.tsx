@@ -15,10 +15,12 @@ declare module 'react' {
 const InputInner = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
   const {
     id,
+    name,
     label,
     autoComplete,
     className,
     placeholder,
+    error = undefined,
     type,
     onBlur,
     onFocus,
@@ -27,10 +29,16 @@ const InputInner = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
 
   return (
     <div className={cn(styles['input'], className)}>
-      {label && <label htmlFor={id}>{label}</label>}
-      <div className={cn(styles['input__wrapper'])}>
+      {label && <label htmlFor={id || label}>{label}</label>}
+      <div
+        className={cn(
+          styles['input__wrapper'],
+          error?.message ? styles['input__wrapper--error'] : ''
+        )}
+      >
         <input
-          id={id}
+          id={id || label}
+          name={name}
           ref={ref}
           type={type}
           autoComplete={autoComplete}
@@ -39,6 +47,9 @@ const InputInner = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
           onBlur={onBlur}
           {...restProps}
         />
+        {error?.message && (
+          <span className={styles['input--error']}>{error?.message}</span>
+        )}
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ export default function Button({
   return (
     <button
       onClick={onClick}
-      className={cn(className, styles['button'], `bg-color-${variant}`)}
+      className={cn(className, styles['button'], styles[`button--${variant}`])}
     >
       <Col flex='none'>{children}</Col>
       <Col flex='none' className='d-flex' data-selector='icon'>
