@@ -1,3 +1,14 @@
+@mixin common-hover-styles($color) {
+  box-shadow: 9px 9px 0px 0px map-get($colors, $color);
+  border: 2px solid map-get($colors, $color);
+  transition: all ease-in-out 200ms;
+
+  [data-selector='icon'] {
+    rotate: 90deg;
+    transition: all ease-in-out 200ms;
+  }
+}
+
 .button {
   all: unset;
   box-sizing: border-box;
@@ -14,19 +25,24 @@
   align-items: center;
   transition: all ease-in-out 200ms;
 
-  [data-selector='icon'] {
-    transition: all ease-in-out 200ms;
+  &--white {
+    background-color: map-get($colors, white);
+
+    &:hover {
+      @include common-hover-styles(yellow);
+    }
   }
 
-  &:hover {
-    box-shadow: 9px 9px 0px 0px #262626;
-    border: 2px solid map-get($colors, dark);
-    transition: all ease-in-out 200ms;
+  &--yellow {
+    background-color: map-get($colors, yellow);
 
-    [data-selector='icon'] {
-      rotate: 90deg;
-      transition: all ease-in-out 200ms;
+    &:hover {
+      @include common-hover-styles(dark);
     }
+  }
+
+  [data-selector='icon'] {
+    transition: all ease-in-out 200ms;
   }
 }
 

@@ -1,0 +1,123 @@
+:import('../../atoms/card/card.module.scss') {
+  card: card;
+}
+
+@mixin common-text-styles($color: yellow, $font-size: 4, $font-weight: 400) {
+  color: map-get($colors, $color);
+  font-size: map-get($font-sizes, $font-size);
+  font-weight: map-get($font-weights, $font-weight);
+}
+
+.home {
+  background-color: map-get($colors, dark);
+  color: map-get($colors, white);
+  padding-block-start: 5rem;
+  padding-block-end: 7rem;
+
+  &__form {
+    &--title {
+      @include common-text-styles();
+      margin-block-end: 1rem;
+    }
+
+    &--submit {
+      margin-block-start: 1rem;
+    }
+
+    label {
+      color: map-get($colors, yellow);
+    }
+
+    form > div {
+      row-gap: 1rem;
+    }
+  }
+
+  &__content {
+    &--2nd-row {
+      position: relative;
+      inset-block-start: 5rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .home {
+    padding-block-end: 5rem;
+
+    &__form {
+      &--submit {
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-between(sm, xxl) {
+  .home {
+    &__form {
+      &--title {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .home {
+    &__content {
+      &--1st-row,
+      &--2nd-row {
+        > div {
+          margin-block: -1rem !important;
+
+          & > div {
+            padding-block: 1rem !important;
+          }
+        }
+      }
+
+      &--2nd-row {
+        inset-block-start: 2rem;
+
+        > div {
+          > div {
+            &:first-of-type {
+              .card {
+                background-color: map-get($colors, white);
+
+                div:last-of-type {
+                  > div:nth-child(2) {
+                    span::after {
+                      color: map-get($colors, yellow);
+                    }
+                  }
+                }
+              }
+            }
+
+            &:last-of-type {
+              .card {
+                background-color: map-get($colors, yellow);
+
+                div:last-of-type {
+                  > div:nth-child(2) {
+                    span::after {
+                      color: map-get($colors, white);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    [data-selector='cards-wrapper'] {
+      justify-content: center;
+    }
+  }
+}
