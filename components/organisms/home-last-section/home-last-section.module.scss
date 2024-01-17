@@ -11,7 +11,6 @@
 .home {
   background-color: map-get($colors, dark);
   color: map-get($colors, white);
-  padding-block-start: 5rem;
   padding-block-end: 7rem;
 
   &__form {
@@ -39,11 +38,18 @@
       inset-block-start: 5rem;
     }
   }
+
+  &--slanted-bg {
+    height: 20rem;
+    background-color: map-get($colors, dark);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0% 100%);
+  }
 }
 
 @include media-breakpoint-down(sm) {
   .home {
     padding-block-end: 5rem;
+    padding-block-start: 1.5rem;
 
     &__form {
       &--submit {
@@ -51,6 +57,10 @@
           width: 100%;
         }
       }
+    }
+
+    &--slanted-bg {
+      height: 8rem;
     }
   }
 }
