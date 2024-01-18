@@ -1,0 +1,14 @@
+@each $colorPrefix, $color in $colors {
+  .color-#{$colorPrefix} {
+    color: var(--#{$colorPrefix}, $color) !important;
+  }
+  .bg-color-#{$colorPrefix} {
+    background-color: var(--#{$colorPrefix}, $color) !important;
+  }
+  .border-color-#{$colorPrefix} {
+    border-color: var(--#{$colorPrefix}, $color) !important;
+  }
+  .fill-#{$colorPrefix} {
+    fill: var(--#{$colorPrefix}, $color) !important;
+  }
+}
