@@ -65,8 +65,6 @@ export function HomeForm() {
     )
   }
 
-  console.log(errors)
-
   return (
     <>
       <div className={styles['home__form--title']}>
