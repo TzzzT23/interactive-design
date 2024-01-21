@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Row from 'components/atoms/row'
 import Col from 'components/atoms/col'
 import Button from 'components/atoms/button'
@@ -9,7 +10,6 @@ import { Header } from './helper'
 import ArrowRightSvg from 'components/atoms/icons/arrow-right'
 import useTypewriterEffect from 'utils/hooks/useTypewriterEffect'
 import styles from './home-first-section.module.scss'
-import Image from 'next/image'
 
 export default function HomeFirstSection() {
   useTypewriterEffect()
